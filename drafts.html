@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMail - 留给未来的草稿</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            line-height: 1.8em;
+        }
+        h1 {
+            color: #40e0d0;
+            font-size: 2.5em;
+        }
+        .section {
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: #222;
+            color: #eee;
+            border: 1px solid #444;
+            padding: 10px;
+            font-size: 1em;
+            resize: vertical;
+        }
+        button {
+            background: #40e0d0;
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #2dc2ba;
+        }
+    </style>
+</head>
+<body>
+    <h1>留给未来的草稿</h1>
+    <div class="section">
+        <p>也许他们尚未掌握跨越时空的信息技术，</p>
+        <p>但你今天留下的文字，将是未来找到你的信号。</p>
+        <p>FutureMail 不保存你的数据，这一切，只属于你与未来。</p>
+    </div>
+    <div class="section">
+        <textarea id="message" placeholder="写下你想告诉未来的一句话、一段经历，或一个警告..."></textarea><br>
+        <button onclick="downloadDraft()">下载时间胶囊</button>
+    </div>
+    <script>
+        function downloadDraft() {
+            const text = document.getElementById('message').value;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'FutureMail_Draft.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
